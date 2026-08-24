@@ -54,12 +54,14 @@ static int ht_get_hash(
 	return (hash_a + ((attempt*(hash_b+1))) % num_buckets);
 }
 
+static ht_item HT_DELETED_ITEM = {NULL, NULL};
+
 void ht_insert(ht_hash_table* ht, const char* key, const char* value) {
 	ht_item* new_item = ht_new_item(key, value);
 	int index = ht_get_hash(key, ht->size, 0);
 	ht_item* cur_item = ht->items[index];
 	int i = 1; 
-	while(cur_item != NULL) {
+	while(cur_item != NULL && cur_item != &HT_DELETED_ITEM) {
 		index = ht_get_hash(key, ht->size, i++);	
 		cur_item = ht->items[index];
 	}
@@ -72,15 +74,13 @@ char* ht_search(ht_hash_table* ht, const char* key) {
 	ht_item* cur_item = ht->items[index];
 	int i = 1;
 	while(cur_item != NULL) {
-		if(strcmp(cur_item->key, key) == 0) return cur_item->value;
+		if(cur_item != &HT_DELETED_ITEM && strcmp(cur_item->key, key) == 0) return cur_item->value;
 		index = ht_get_hash(key, ht->size, i++);
 		cur_item = ht->items[index];
 	}
 	return NULL;
 
 }
-
-static ht_item HT_DELETED_ITEM = {NULL, NULL};
 
 void ht_delete(ht_hash_table* ht, const char* key) {
 	int index = ht_get_hash(key, ht->size, 0);
