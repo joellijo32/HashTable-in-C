@@ -141,12 +141,12 @@ void ht_delete(ht_hash_table* ht, const char* key) {
 			if(strcmp(cur_item->key, key) == 0) {
 				ht_del_item(cur_item);
 				ht->items[index] = &HT_DELETED_ITEM;
+				ht->count--;
 			}
 		}
 		index = ht_get_hash(key, ht->size, i++);
 		cur_item = ht->items[index];
 	}
-	ht->count--;
 }
 
 
