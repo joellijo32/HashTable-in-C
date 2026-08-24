@@ -53,3 +53,17 @@ static int ht_get_hash(
 	const int hash_b = ht_hash(s, HT_PRIME_2, num_buckets);
 	return (hash_a + ((attempt*(hash_b+1))) % num_buckets);
 }
+
+void ht_insert(ht_hash_table* ht, const char* key, const char* value) {
+	ht_item* new_item = ht_new_item(key, value);
+	int index = ht_get_hash(key, ht->size, 0);
+	ht_item* cur_item = ht->items[index];
+	int i = 1; 
+	while(cur_item != NULL) {
+		index = ht_get_hash(key, ht->size, i++);	
+		cur_item = ht->items[index];
+	}
+	ht->items[index] = new_item;
+	ht->count++;
+}
+
