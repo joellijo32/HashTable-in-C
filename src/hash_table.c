@@ -29,7 +29,6 @@ static void ht_del_item(ht_item* i) {
 	free(i->key);
 	free(i->value);
 	free(i);
-	i = NULL;
 }
 
 void ht_del_hash_table(ht_hash_table* ht) {
@@ -39,7 +38,6 @@ void ht_del_hash_table(ht_hash_table* ht) {
 	}
 	free(ht->items);
 	free(ht);
-	ht = NULL;
 }
 
 static int ht_hash(const char* s, const int a, const int m) {
