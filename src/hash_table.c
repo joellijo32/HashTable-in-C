@@ -80,4 +80,24 @@ char* ht_search(ht_hash_table* ht, const char* key) {
 
 }
 
+static ht_item HT_DELETED_ITEM = {NULL, NULL};
+
+void ht_delete(ht_hash_table* ht, const char* key) {
+	int index = ht_get_hash(key, ht->size, 0);
+	ht_item* cur_item = ht->items[index];
+	int i = 1;
+	while(cur_item != NULL) {
+		if(cur_item != &HT_DELETED_ITEM) {
+			if(strcmp(cur_item->key, key) == 0) {
+				ht_del_item(cur_item);
+				ht->items[index] = &HT_DELETED_ITEM;
+			}
+		}
+		index = ht_get_hash(key, ht->size, i++);
+		cur_item = ht->items[index];
+	}
+	ht->count--;
+}
+
+
 
