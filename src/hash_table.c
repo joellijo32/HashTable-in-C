@@ -17,7 +17,7 @@ static ht_hash_table* ht_new_sized(const int base_size) {
 	ht->size = next_prime(base_size);
 
 	ht->count = 0;
-	ht->items = xcalloc((size_t)ht->size, sizeof(ht_item*));
+	ht->items = calloc((size_t)ht->size, sizeof(ht_item*));
 	return ht;
 }
 
