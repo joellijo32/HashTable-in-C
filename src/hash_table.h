@@ -3,6 +3,9 @@
 #define HT_INITIAL_BASE_SIZE 53
 #define HT_PRIME_1 151
 #define HT_PRIME_2 163
+#endif
+
+#include <stddef.h>
 
 typedef struct {
 	char* key;
