@@ -160,7 +160,7 @@ void ht_delete(ht_hash_table* ht, const char* key) {
 		index = ht_get_hash(key, ht->size, i++);
 		cur_item = ht->items[index];
 	}
-	const int load = ht->count*100 / ht->size;
+	const int load = (int)((ht->count*100LL) / ht->size);
 	if(load < 10) ht_resize_down(ht);
 
 }
