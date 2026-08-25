@@ -136,9 +136,7 @@ HashTable-in-C/
 
 MIT License — free to use and modify.
 
----
-
 <p align="center">
-  Made with ❤️ by <b>Joel Lijo Mathew</b>
+  Made by <b>Joel Lijo Mathew</b>
 </p>
 
