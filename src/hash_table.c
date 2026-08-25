@@ -111,6 +111,8 @@ void ht_insert(ht_hash_table* ht, const char* key, const char* value) {
 	const int load = (int)((ht->count*100LL) / ht->size);
 	if(load > 70) ht_resize_up(ht);
 	ht_item* new_item = ht_new_item(key, value);
+
+	if (!new_item) return;
 	int index = ht_get_hash(key, ht->size, 0);
 	ht_item* cur_item = ht->items[index];
 	int i = 1; 
