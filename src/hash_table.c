@@ -6,8 +6,18 @@
 
 static ht_item* ht_new_item(const char* k, const char* v) {
 	ht_item* i = malloc(sizeof(ht_item));
+
+	if (!i) return NULL;
+
 	i->key = strdup(k);
 	i->value = strdup(v);
+
+	if (!i->key || !i->value) {
+		free(i->key); free(i->value);
+		free(i);
+		return NULL;
+	}
+
 	return i;
 }
 
