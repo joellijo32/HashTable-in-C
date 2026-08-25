@@ -120,7 +120,7 @@ int main(void) {
 HashTable-in-C/
 ├── Makefile
 ├── README.md
-├── build/                 # compiled binaries (git-ignored)
+├── build/                 # compiled binaries
 │   ├── hashtable          # demo binary
 │   └── test_hashtable     # test binary
 └── src/
