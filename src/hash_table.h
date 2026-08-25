@@ -1,5 +1,8 @@
 #ifndef HASH_TABLE_H
 #define HASH_TABLE_H
+#define HT_INITIAL_BASE_SIZE 53
+#define HT_PRIME_1 151
+#define HT_PRIME_2 163
 
 typedef struct {
 	char* key;
