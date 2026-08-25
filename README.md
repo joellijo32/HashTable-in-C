@@ -1,6 +1,6 @@
 # HashTable in C
 
-A simple, production-quality **open-addressed, double-hashed hash table** written in C11.
+A simple, **open-addressed, double-hashed hash table** written in C11.
 Supports dynamic resizing, lazy deletion, and a key-enumeration iterator.
 
 ## Features
@@ -75,7 +75,7 @@ Runs a demo exercising **insert**, **search**, **update**, **deletion**, and **k
 | Function | Description |
 |---|---|
 | `void ht_insert(ht_hash_table* ht, const char* key, const char* value)` | Insert or update a key-value pair. |
-| `char* ht_search(const ht_hash_table* ht, const char* key)` | Look up a key. Returns `NULL` if not found. The returned string is **owned by the table** — do not free it. |
+| `char* ht_search(const ht_hash_table* ht, const char* key)` | Look up a key. Returns `NULL` if not found. The returned string is **owned by the table** |
 | `void ht_delete(ht_hash_table* ht, const char* key)` | Delete a key. No-op if key not found. |
 
 ### Accessors
