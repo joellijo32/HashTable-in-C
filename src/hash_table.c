@@ -77,6 +77,7 @@ static void ht_resize(ht_hash_table* ht, const int base_size) {
 	if(base_size < HT_INITIAL_BASE_SIZE) return;
 
 	ht_hash_table* new_ht = ht_new_sized(base_size);
+	if(!new_ht) return;
 	for(int i = 0; i < ht->size; i++){
 		ht_item* item = ht->items[i];
 		if(item != NULL && item != &HT_DELETED_ITEM) ht_insert(new_ht, item->key, item->value);
