@@ -41,23 +41,25 @@ The actual bucket count is always the **next prime** ≥ `base_size`.
 
 Deleted slots are marked with a sentinel (`HT_DELETED_ITEM`) so that existing probe chains are not broken. The sentinel is skipped during search but treated as an empty slot during insert.
 
-## Building
-
-```bash
-# Build the demo binary
-make
-
-# Run the demo
-./build/hashtable
-
-# Build and run all tests
-make test
-
-# Clean build artifacts
-make clean
-```
+## Building & Running
 
 Requires **GCC** and **make**.
+
+### Build
+
+```bash
+make          # compiles → build/hashtable  (demo)
+make test     # compiles and runs the test suite → build/test_hashtable
+make clean    # removes all build artifacts
+```
+
+### Run
+
+```bash
+./build/hashtable
+```
+
+Runs a demo exercising **insert**, **search**, **update**, **deletion**, and **key enumeration** on the hash table.
 
 ## API Reference
 
