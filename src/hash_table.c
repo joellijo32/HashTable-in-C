@@ -32,7 +32,7 @@ static ht_hash_table* ht_new_sized(const int base_size) {
 	return ht;
 }
 
-ht_hash_table* ht_new() {
+ht_hash_table* ht_new(void) {
 	return ht_new_sized(HT_INITIAL_BASE_SIZE);
 }
 
