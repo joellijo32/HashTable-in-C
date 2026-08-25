@@ -131,7 +131,7 @@ void ht_insert(ht_hash_table* ht, const char* key, const char* value) {
 
 }
 
-char* ht_search(ht_hash_table* ht, const char* key) {
+char* ht_search(const ht_hash_table* ht, const char* key) {
 	int index = ht_get_hash(key, ht->size, 0);
 	ht_item* cur_item = ht->items[index];
 	int i = 1;
