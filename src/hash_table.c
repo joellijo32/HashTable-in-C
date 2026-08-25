@@ -69,7 +69,7 @@ static int ht_get_hash(
 		const char* s, const int num_buckets, const int attempt
 ) {
 	const int hash_a = ht_hash(s, HT_PRIME_1, num_buckets);
-	const int hash_b = ht_hash(s, HT_PRIME_2, num_buckets);
+	const int hash_b = 1 + (ht_hash(s, HT_PRIME_2, num_buckets-1));
 	return (hash_a + (attempt*(hash_b+1))) % num_buckets;
 }
 
@@ -131,7 +131,7 @@ void ht_insert(ht_hash_table* ht, const char* key, const char* value) {
 
 }
 
-char* ht_search(ht_hash_table* ht, const char* key) {
+char* ht_search(const ht_hash_table* ht, const char* key) {
 	int index = ht_get_hash(key, ht->size, 0);
 	ht_item* cur_item = ht->items[index];
 	int i = 1;
