@@ -139,8 +139,6 @@ char* ht_search(ht_hash_table* ht, const char* key) {
 }
 
 void ht_delete(ht_hash_table* ht, const char* key) {
-	const int load = ht->count*100 / ht->size;
-	if(load < 10) ht_resize_down(ht);
 	int index = ht_get_hash(key, ht->size, 0);
 	ht_item* cur_item = ht->items[index];
 	int i = 1;
@@ -150,12 +148,15 @@ void ht_delete(ht_hash_table* ht, const char* key) {
 				ht_del_item(cur_item);
 				ht->items[index] = &HT_DELETED_ITEM;
 				ht->count--;
-				return;
+				break;
 			}
 		}
 		index = ht_get_hash(key, ht->size, i++);
 		cur_item = ht->items[index];
 	}
+	const int load = ht->count*100 / ht->size;
+	if(load < 10) ht_resize_down(ht);
+
 }
 
 
