@@ -140,6 +140,7 @@ void ht_delete(ht_hash_table* ht, const char* key) {
 				ht_del_item(cur_item);
 				ht->items[index] = &HT_DELETED_ITEM;
 				ht->count--;
+				return;
 			}
 		}
 		index = ht_get_hash(key, ht->size, i++);
