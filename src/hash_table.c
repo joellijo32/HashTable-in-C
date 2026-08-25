@@ -24,12 +24,17 @@ static ht_item* ht_new_item(const char* k, const char* v) {
 
 static ht_hash_table* ht_new_sized(const int base_size) {
 	ht_hash_table* ht = malloc(sizeof(ht_hash_table));
+	if (!ht) return NULL;
 	ht->base_size = base_size;
 	
 	ht->size = next_prime(base_size);
 
 	ht->count = 0;
 	ht->items = calloc((size_t)ht->size, sizeof(ht_item*));
+	if (!ht->items) {
+		free(ht->items);
+		return NULL;
+	}
 	return ht;
 }
 
