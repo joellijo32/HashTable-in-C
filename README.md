@@ -48,8 +48,8 @@ Requires **GCC** and **make**.
 ### Build
 
 ```bash
-make          # compiles → build/hashtable  (demo)
-make test     # compiles and runs the test suite → build/test_hashtable
+make          # compiles (build/hashtable)
+make test     # compiles and runs the test suite (build/test_hashtable)
 make clean    # removes all build artifacts
 ```
 
