@@ -23,7 +23,7 @@ static ht_item* ht_new_item(const char* k, const char* v) {
 	return i;
 }
 
-static ht_hash_table* ht_new_sized(const int base_size) {
+static ht_hash_table* ht_new_sized(const size_t base_size) {
 	ht_hash_table* ht = malloc(sizeof(ht_hash_table));
 	if (!ht) return NULL;
 	ht->base_size = base_size;
@@ -50,6 +50,7 @@ static void ht_del_item(ht_item* i) {
 }
 
 void ht_del_hash_table(ht_hash_table* ht) {
+	if(ht == NULL) return;
 	for (size_t i = 0; i < ht->size; i++){
 		ht_item* item = ht->items[i];
 		if(item != NULL && item != &HT_DELETED_ITEM) ht_del_item(item);
@@ -99,12 +100,12 @@ static void ht_resize(ht_hash_table* ht, const int base_size) {
 }
 
 static void ht_resize_up(ht_hash_table* ht) {
-	const int new_size = ht->base_size * 2;
+	const size_t new_size = ht->base_size * 2;
 	ht_resize(ht, new_size);
 }
 
 static void ht_resize_down(ht_hash_table* ht) {
-	const int new_size = ht->base_size / 2;
+	const size_t new_size = ht->base_size / 2;
 	ht_resize(ht, new_size);
 }
 
