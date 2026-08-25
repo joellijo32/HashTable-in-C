@@ -49,7 +49,7 @@ static void ht_del_item(ht_item* i) {
 }
 
 void ht_del_hash_table(ht_hash_table* ht) {
-	for (int i = 0; i < ht->size; i++){
+	for (size_t i = 0; i < ht->size; i++){
 		ht_item* item = ht->items[i];
 		if(item != NULL && item != &HT_DELETED_ITEM) ht_del_item(item);
 	}
@@ -78,7 +78,7 @@ static void ht_resize(ht_hash_table* ht, const int base_size) {
 
 	ht_hash_table* new_ht = ht_new_sized(base_size);
 	if(!new_ht) return;
-	for(int i = 0; i < ht->size; i++){
+	for(size_t i = 0; i < ht->size; i++){
 		ht_item* item = ht->items[i];
 		if(item != NULL && item != &HT_DELETED_ITEM) ht_insert(new_ht, item->key, item->value);
 	}
