@@ -45,7 +45,7 @@ static void ht_del_item(ht_item* i) {
 void ht_del_hash_table(ht_hash_table* ht) {
 	for (int i = 0; i < ht->size; i++){
 		ht_item* item = ht->items[i];
-		if(item != NULL) ht_del_item(item);
+		if(item != NULL && item != &HT_DELETED_ITEM) ht_del_item(item);
 	}
 	free(ht->items);
 	free(ht);
@@ -104,7 +104,7 @@ static void ht_resize_down(ht_hash_table* ht) {
 }
 
 void ht_insert(ht_hash_table* ht, const char* key, const char* value) {
-	const int load = ht->count*100 / ht->size;
+	const int load = (int)((ht->count*100LL) / ht->size);
 	if(load > 70) ht_resize_up(ht);
 	ht_item* new_item = ht_new_item(key, value);
 	int index = ht_get_hash(key, ht->size, 0);
