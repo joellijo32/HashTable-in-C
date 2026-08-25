@@ -96,17 +96,17 @@ int main(void) {
 
     ht_insert(ht, "name", "Alice");
     ht_insert(ht, "lang", "C");
-    ht_insert(ht, "name", "Bob");   /* updates existing key */
+    ht_insert(ht, "name", "Bob");   // updates existing key
 
-    printf("%s\n", ht_search(ht, "name")); /* Bob */
-    printf("%s\n", ht_search(ht, "lang")); /* C */
+    printf("%s\n", ht_search(ht, "name")); 
+    printf("%s\n", ht_search(ht, "lang")); 
 
-    /* Enumerate all keys */
+    // Enumerate all keys 
     size_t n;
     char** keys = ht_keys(ht, &n);
     for (size_t i = 0; i < n; i++)
         printf("key: %s\n", keys[i]);
-    free(keys);   /* free the array, NOT the strings */
+    free(keys);   
 
     ht_delete(ht, "lang");
     ht_del_hash_table(ht);
