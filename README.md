@@ -26,8 +26,6 @@ Where:
 - `hash_a(s) = polynomial_hash(s, PRIME_1, num_buckets)`
 - `hash_b(s) = 1 + polynomial_hash(s, PRIME_2, num_buckets - 1)`
 
-The `+1` in `hash_b` ensures it is never zero, guaranteeing full-table traversal.
-
 ### Resizing
 
 | Load Factor | Action |
