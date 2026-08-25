@@ -33,7 +33,7 @@ static ht_hash_table* ht_new_sized(const int base_size) {
 	ht->count = 0;
 	ht->items = calloc((size_t)ht->size, sizeof(ht_item*));
 	if (!ht->items) {
-		free(ht->items);
+		free(ht);
 		return NULL;
 	}
 	return ht;
