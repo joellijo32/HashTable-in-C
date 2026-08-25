@@ -1,8 +1,9 @@
-#include <stdlib.h>
 #include <string.h>
 
 #include "hash_table.h"
 #include "prime.h"
+
+static ht_item HT_DELETED_ITEM = {NULL, NULL};
 
 static ht_item* ht_new_item(const char* k, const char* v) {
 	ht_item* i = malloc(sizeof(ht_item));
@@ -23,12 +24,17 @@ static ht_item* ht_new_item(const char* k, const char* v) {
 
 static ht_hash_table* ht_new_sized(const int base_size) {
 	ht_hash_table* ht = malloc(sizeof(ht_hash_table));
+	if (!ht) return NULL;
 	ht->base_size = base_size;
 	
 	ht->size = next_prime(base_size);
 
 	ht->count = 0;
 	ht->items = calloc((size_t)ht->size, sizeof(ht_item*));
+	if (!ht->items) {
+		free(ht->items);
+		return NULL;
+	}
 	return ht;
 }
 
@@ -43,14 +49,13 @@ static void ht_del_item(ht_item* i) {
 }
 
 void ht_del_hash_table(ht_hash_table* ht) {
-	for (int i = 0; i < ht->size; i++){
+	for (size_t i = 0; i < ht->size; i++){
 		ht_item* item = ht->items[i];
 		if(item != NULL && item != &HT_DELETED_ITEM) ht_del_item(item);
 	}
 	free(ht->items);
 	free(ht);
 }
-
 static int ht_hash(const char* s, const int a, const int m) {
 	long hash = 0;
 	const int len_s = strlen(s);
@@ -68,13 +73,12 @@ static int ht_get_hash(
 	return (hash_a + (attempt*(hash_b+1))) % num_buckets;
 }
 
-static ht_item HT_DELETED_ITEM = {NULL, NULL};
-
 static void ht_resize(ht_hash_table* ht, const int base_size) {
 	if(base_size < HT_INITIAL_BASE_SIZE) return;
 
 	ht_hash_table* new_ht = ht_new_sized(base_size);
-	for(int i = 0; i < ht->size; i++){
+	if(!new_ht) return;
+	for(size_t i = 0; i < ht->size; i++){
 		ht_item* item = ht->items[i];
 		if(item != NULL && item != &HT_DELETED_ITEM) ht_insert(new_ht, item->key, item->value);
 	}
@@ -107,6 +111,8 @@ void ht_insert(ht_hash_table* ht, const char* key, const char* value) {
 	const int load = (int)((ht->count*100LL) / ht->size);
 	if(load > 70) ht_resize_up(ht);
 	ht_item* new_item = ht_new_item(key, value);
+
+	if (!new_item) return;
 	int index = ht_get_hash(key, ht->size, 0);
 	ht_item* cur_item = ht->items[index];
 	int i = 1; 
@@ -154,7 +160,7 @@ void ht_delete(ht_hash_table* ht, const char* key) {
 		index = ht_get_hash(key, ht->size, i++);
 		cur_item = ht->items[index];
 	}
-	const int load = ht->count*100 / ht->size;
+	const int load = (int)((ht->count*100LL) / ht->size);
 	if(load < 10) ht_resize_down(ht);
 
 }
