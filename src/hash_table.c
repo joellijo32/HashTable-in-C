@@ -4,6 +4,8 @@
 #include "hash_table.h"
 #include "prime.h"
 
+static ht_item HT_DELETED_ITEM = {NULL, NULL};
+
 static ht_item* ht_new_item(const char* k, const char* v) {
 	ht_item* i = malloc(sizeof(ht_item));
 
@@ -50,7 +52,6 @@ void ht_del_hash_table(ht_hash_table* ht) {
 	free(ht->items);
 	free(ht);
 }
-
 static int ht_hash(const char* s, const int a, const int m) {
 	long hash = 0;
 	const int len_s = strlen(s);
@@ -67,8 +68,6 @@ static int ht_get_hash(
 	const int hash_b = ht_hash(s, HT_PRIME_2, num_buckets);
 	return (hash_a + (attempt*(hash_b+1))) % num_buckets;
 }
-
-static ht_item HT_DELETED_ITEM = {NULL, NULL};
 
 static void ht_resize(ht_hash_table* ht, const int base_size) {
 	if(base_size < HT_INITIAL_BASE_SIZE) return;
