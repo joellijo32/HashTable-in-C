@@ -113,6 +113,14 @@ int main(void) {
     return 0;
 }
 ```
+## Demo
+
+<img width="924" height="731" alt="Screenshot From 2026-08-26 10-55-12" src="https://github.com/user-attachments/assets/84e21526-e3ed-4435-87a3-d6514c074155" />
+
+<img width="924" height="731" alt="Screenshot From 2026-08-26 10-55-21" src="https://github.com/user-attachments/assets/0fb54629-38bf-4c83-8cf9-ed796123c53a" />
+
+<img width="670" height="527" alt="Screenshot From 2026-08-26 10-55-36" src="https://github.com/user-attachments/assets/cccd0d55-af71-48fb-b015-3e288d2617a6" />
+
 
 ## File Structure
 
