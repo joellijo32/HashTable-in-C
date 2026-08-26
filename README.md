@@ -115,12 +115,11 @@ int main(void) {
 ```
 ## Demo
 
-<img width="924" height="731" alt="Screenshot From 2026-08-26 10-55-12" src="https://github.com/user-attachments/assets/84e21526-e3ed-4435-87a3-d6514c074155" />
+<img width="1308" height="737" alt="1" src="https://github.com/user-attachments/assets/2cd76cb6-26b8-49a5-9412-f93f635290bb" />
 
-<img width="924" height="731" alt="Screenshot From 2026-08-26 10-55-21" src="https://github.com/user-attachments/assets/0fb54629-38bf-4c83-8cf9-ed796123c53a" />
+<img width="1318" height="737" alt="2" src="https://github.com/user-attachments/assets/9c89135f-c4fe-4005-9f59-2ff8c2d98562" />
 
-<img width="524" height="414" alt="Screenshot From 2026-08-26 11-49-49" src="https://github.com/user-attachments/assets/7d1370ee-a440-43b8-8bce-28deb6a43b46" />
-
+<img width="956" height="532" alt="3" src="https://github.com/user-attachments/assets/a66b992f-7312-4768-9826-a35d02c7fafb" />
 
 ## File Structure
 
