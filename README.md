@@ -119,7 +119,7 @@ int main(void) {
 
 <img width="924" height="731" alt="Screenshot From 2026-08-26 10-55-21" src="https://github.com/user-attachments/assets/0fb54629-38bf-4c83-8cf9-ed796123c53a" />
 
-<img width="670" height="527" alt="Screenshot From 2026-08-26 10-55-36" src="https://github.com/user-attachments/assets/cccd0d55-af71-48fb-b015-3e288d2617a6" />
+<img width="524" height="414" alt="Screenshot From 2026-08-26 11-49-49" src="https://github.com/user-attachments/assets/7d1370ee-a440-43b8-8bce-28deb6a43b46" />
 
 
 ## File Structure
