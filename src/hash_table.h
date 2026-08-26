@@ -33,4 +33,6 @@ size_t ht_capacity(const ht_hash_table* ht);
 
 char** ht_keys(const ht_hash_table* ht, size_t* out_len);
 
+void ht_print(const ht_hash_table* ht);
+
 #endif
