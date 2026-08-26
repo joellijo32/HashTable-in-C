@@ -1,4 +1,5 @@
 #define _POSIX_C_SOURCE 200809L
+#include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 
@@ -196,3 +197,21 @@ char** ht_keys(const ht_hash_table* ht, size_t* out_len) {
 	*out_len = k;
 	return keys;
 }
+
+void ht_print(const ht_hash_table* ht) {
+	if(ht == NULL) return;
+	printf("\nHash Table: \n");
+	int counter = 1;
+	for (size_t i = 0; i < ht->size; i++){
+		ht_item* cur_item = ht->items[i];
+		if (cur_item == &HT_DELETED_ITEM) {
+			printf("\n%d. (Deleted item)\n", counter++);
+		} else if (cur_item != NULL) {
+			printf("\n%d. Key: %s\n   Value: %s\n", counter++, cur_item->key, cur_item->value);
+		}
+	}
+
+}
+
+
+
