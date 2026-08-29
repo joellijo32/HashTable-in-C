@@ -3,7 +3,7 @@
 A simple, **open-addressed, double-hashed hash table** written in C11.
 Supports dynamic resizing, lazy deletion, and a key-enumeration iterator.
 
-https://github.com/user-attachments/assets/5302e769-f155-4235-8936-78fe2406f979
+<img width="400" height="225" alt="HashTable in C Demo" src="https://github.com/user-attachments/assets/8789ed98-adbc-4182-87b5-7a3b5033c0ab" />
 
 ## Features
 
