@@ -3,6 +3,8 @@
 A simple, **open-addressed, double-hashed hash table** written in C11.
 Supports dynamic resizing, lazy deletion, and a key-enumeration iterator.
 
+https://github.com/user-attachments/assets/5302e769-f155-4235-8936-78fe2406f979
+
 ## Features
 
 - **Open addressing** with **double hashing** for collision resolution
